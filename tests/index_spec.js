@@ -52,6 +52,37 @@ t.describe('I18n', () => {
     });
   });
 
+  t.describe('#isExist', () => {
+    const subject = (() => I18n.isExist(key));
+    let key       = null;
+
+    t.beforeEach(() => {
+      I18n.load({
+        a: 'A',
+      });
+    });
+
+    t.context('When keys is existed', () => {
+      t.beforeEach(() => {
+        key = 'a';
+      });
+
+      t.it('Return true', () => {
+        t.expect(subject()).equals(true);
+      });
+    });
+
+    t.context('When keys is not existed', () => {
+      t.beforeEach(() => {
+        key = 'b';
+      });
+
+      t.it('Return false', () => {
+        t.expect(subject()).equals(false);
+      });
+    });
+  });
+
   t.describe('#load', () => {
     const subject = (() => I18n.load(locale));
     let locale    = null;

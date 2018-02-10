@@ -1,6 +1,6 @@
 {
   "name": "track-i18n",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Internationalization support for track.",
   "main": "lib/index.js",
   "repository": "alfa-jpn/track-i18n.git",
