@@ -1,6 +1,8 @@
 # TrackI18n
 Internationalization support for track.
 
+[![Build Status](https://travis-ci.org/yosami-framework/track-i18n.svg?branch=master)](https://travis-ci.org/yosami-framework/track-i18n)
+
 ## Installation
 
 ### npm
