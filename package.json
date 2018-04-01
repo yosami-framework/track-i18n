@@ -1,9 +1,9 @@
 {
   "name": "track-i18n",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Internationalization support for track.",
   "main": "lib/index.js",
-  "repository": "alfa-jpn/track-i18n.git",
+  "repository": "yosami-framework/track-i18n.git",
   "scripts": {
     "linter": "eslint ./",
     "test": "ospec"
