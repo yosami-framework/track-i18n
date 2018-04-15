@@ -3,10 +3,66 @@ const I18n = require('../lib/index.js');
 
 t.describe('I18n', () => {
   t.beforeEach(() => {
-    I18n.clear();
+    I18n._locale = null;
   });
 
-  t.describe('t', () => {
+  t.describe('#t', () => {
+    const subject = (() => (new I18n(namespace)).t('hoge'));
+    let namespace = null;
+
+    t.beforeEach(() => {
+      I18n.t = t.spy(I18n.t);
+      namespace = 'ja';
+    });
+
+    t.it('Call .t with namespace', () => {
+      subject();
+      t.expect(I18n.t.callCount).equals(1);
+      t.expect(I18n.t.args[0]).equals('ja.hoge');
+    });
+
+    t.context('When namespace is null', () => {
+      t.beforeEach(() => {
+        namespace = undefined;
+      });
+
+      t.it('Call .t with namespace', () => {
+        subject();
+        t.expect(I18n.t.callCount).equals(1);
+        t.expect(I18n.t.args[0]).equals('hoge');
+      });
+    });
+  });
+
+  t.describe('#isExist', () => {
+    const subject = (() => (new I18n(namespace)).isExist('hoge'));
+    let namespace = null;
+
+    t.beforeEach(() => {
+      I18n.isExist = t.spy(I18n.isExist);
+      namespace = 'ja';
+    });
+
+    t.it('Call .isExist with namespace', () => {
+      subject();
+      t.expect(I18n.isExist.callCount).equals(1);
+      t.expect(I18n.isExist.args[0]).equals('ja.hoge');
+    });
+
+    t.context('When namespace is null', () => {
+      t.beforeEach(() => {
+        namespace = undefined;
+      });
+
+      t.it('Call .isExist with namespace', () => {
+        subject();
+        t.expect(I18n.isExist.callCount).equals(1);
+        t.expect(I18n.isExist.args[0]).equals('hoge');
+      });
+    });
+  });
+
+  t.describe('.t', () => {
     const subject = (() => I18n.t(key, params));
     let key       = null;
     let params    = null;
@@ -52,7 +108,7 @@ t.describe('I18n', () => {
     });
   });
 
-  t.describe('#isExist', () => {
+  t.describe('.isExist', () => {
     const subject = (() => I18n.isExist(key));
     let key       = null;
 
@@ -83,7 +139,7 @@ t.describe('I18n', () => {
     });
   });
 
-  t.describe('#load', () => {
+  t.describe('.load', () => {
     const subject = (() => I18n.load(locale));
     let locale    = null;
 
