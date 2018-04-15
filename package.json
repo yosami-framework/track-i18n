@@ -1,6 +1,6 @@
 {
   "name": "track-i18n",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Internationalization support for track.",
   "main": "lib/index.js",
   "repository": "yosami-framework/track-i18n.git",
